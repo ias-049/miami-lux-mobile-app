@@ -1,7 +1,7 @@
 import React from 'react';
-import {StyleSheet, Text, TextProps, TextStyle} from 'react-native';
-import {scale} from 'react-native-size-matters';
-import {COLORS} from '../../utils/theme';
+import { StyleSheet, Text, TextProps, TextStyle } from 'react-native';
+import { scale } from 'react-native-size-matters';
+import { COLORS } from '../../utils/theme';
 
 interface ITextProps extends TextProps {
   underline?: boolean;
@@ -31,7 +31,7 @@ export const TextNormal: React.FC<ITextProps> = props => {
       style={[
         styles.text,
         styles.normal,
-        color && {color},
+        color && { color },
         underline && styles.underline,
         textStyle && textStyle,
         italic && styles.italic,
@@ -63,7 +63,7 @@ export const TextSmall: React.FC<ITextProps> = props => {
       style={[
         styles.text,
         styles.small,
-        color && {color},
+        color && { color },
         underline && styles.underline,
         textStyle && textStyle,
         italic && styles.italic,
@@ -95,7 +95,7 @@ export const TextSmaller: React.FC<ITextProps> = props => {
       style={[
         styles.text,
         styles.smaller,
-        color && {color},
+        color && { color },
         underline && styles.underline,
         textStyle && textStyle,
         italic && styles.italic,
@@ -127,7 +127,7 @@ export const TextBig: React.FC<ITextProps> = props => {
       style={[
         styles.text,
         styles.big,
-        color && {color},
+        color && { color },
         underline && styles.underline,
         textStyle && textStyle,
         italic && styles.italic,
@@ -159,7 +159,7 @@ export const TextBigger: React.FC<ITextProps> = props => {
       style={[
         styles.text,
         styles.bigger,
-        color && {color},
+        color && { color },
         underline && styles.underline,
         textStyle && textStyle,
         italic && styles.italic,
@@ -177,28 +177,28 @@ export const TextBigger: React.FC<ITextProps> = props => {
 const styles = StyleSheet.create({
   text: {
     color: COLORS.white,
-    fontFamily: 'Literal-Light',
+    fontFamily: 'Lato-Regular',
     // fontWeight:'700'
   },
   smaller: {
     fontSize: scale(11),
   },
   small: {
-    fontSize: scale(12),
+    fontSize: scale(14),
   },
   normal: {
-    fontSize: scale(15),
-  },
-  big: {
     fontSize: scale(16),
   },
+  big: {
+    fontSize: scale(20),
+  },
   bigger: {
-    fontSize: scale(22),
+    fontSize: scale(24),
   },
   underline: {
     textDecorationLine: 'underline',
   },
-  bold: {fontFamily: 'Literal-Bold'},
+  bold: { fontFamily: 'Lato-Bold' },
   italic: {},
   center: {
     textAlign: 'center',

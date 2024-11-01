@@ -1,3 +1,5 @@
+import { ms } from "react-native-size-matters";
+
 export const COLORS = {
   primary: '#004E80',
   primaryLight: '#A9BABC',
@@ -13,3 +15,20 @@ export const COLORS = {
   brightRed: '#FF0000',
   green: '#4AC17D',
 };
+
+export const THEME = {
+  padding: {
+    sm: ms(5),
+    md: ms(15),
+    lg: ms(20),
+  },
+  radius: {
+    sm: 10,
+    md: 12,
+    lg: 16,
+    xl: 20,
+    full: 100
+  }
+
+
+}
