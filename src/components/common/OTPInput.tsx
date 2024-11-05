@@ -1,11 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, {useEffect, useState} from 'react';
-import {Keyboard, StyleProp, StyleSheet, View, ViewStyle} from 'react-native';
-import {TextSmall, TextSmaller} from './Texts';
+import React, { useEffect, useState } from 'react';
+import { Keyboard, StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
+import { TextSmall, TextSmaller } from './Texts';
 
 import OtpInputs from 'react-native-otp-inputs';
-import {scale} from 'react-native-size-matters';
-import {COLORS} from '../../utils/theme';
+import { scale } from 'react-native-size-matters';
+import { COLORS } from '../../utils/theme';
 
 interface OTPInputProps {
   value: string;
@@ -60,6 +60,7 @@ const OTPInput: React.FC<OTPInputProps> = props => {
           autofillFromClipboard={false}
           style={styles.otpStyles}
           inputStyles={styles.otpInput}
+  
         />
       </View>
       {error && (
@@ -75,22 +76,23 @@ const OTPInput: React.FC<OTPInputProps> = props => {
 export default OTPInput;
 
 const styles = StyleSheet.create({
-  container: {width: '100%', height: scale(75)},
+  container: { width: '100%', height: scale(75) },
   otpStyles: {
     width: '100%',
     paddingTop: scale(10),
     flexDirection: 'row',
     flex: 1,
     gap: 10,
+    justifyContent: 'center',
   },
   otpInput: {
-    backgroundColor: 'transparent',
+    backgroundColor: COLORS.black,
     width: scale(50),
     height: scale(50),
     fontSize: scale(16),
     textAlign: 'center',
     borderRadius: 10,
-    color: COLORS.black,
+    color: COLORS.white,
     borderWidth: 1,
     borderColor: COLORS.primary,
   },

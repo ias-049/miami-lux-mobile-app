@@ -1,7 +1,9 @@
-import {StackScreenProps} from '@react-navigation/stack';
+import { StackScreenProps } from '@react-navigation/stack';
 
 export type AuthStackParamList = {
   Login: undefined;
+  Register: undefined;
+  VerifyOTP: undefined;
 };
 
 export type TabStackParamList = {};

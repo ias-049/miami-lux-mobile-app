@@ -14,63 +14,38 @@ import AppleSVG from '../assets/images/apple.svg'
 import GoogleSVG from '../assets/images/google.svg'
 import FacebookSVG from '../assets/images/facebook.svg'
 
-interface LoginProps {
+interface VerifyOTPProps {
 
 }
 
-export const LoginScreen: React.FC<LoginProps> = ({ navigation }) => {
+export const VerifyOTPScreen: React.FC<VerifyOTPProps> = ({ navigation }) => {
 
     const { control } = useForm()
 
     const FIELDS = [
         {
-            id: '1',
-            type: 'dropdown',
-            label: "Country/Region",
-            name: "country",
-            key: "country",
-            lists: COUNTRIES,
-            dropDownType: 'FLATLIST'
-        },
-        {
             id: '2',
-            type: 'text',
-            label: "Phone nuumber",
-            name: "phonenumber",
-            key: "phonenumber",
-            keyboardType: "number-pad",
-            icon: { name: "call", type: "ionicons", color: COLORS.primary, size: ms(20) }
+            type: 'otp',
+            label: "",
+            numberOfInputs: 4,
+            name: "otp",
+            key: "otp",
         },
     ]
-
-    const onContinue = () => navigation.navigate("VerifyOTP")
 
     return (
         <BackgroundWrapper>
             <SafeAreaView style={styles.container}>
-                <CustomHeader title="Miami Lux" />
+                <CustomHeader title="Miami Lux" cgb onPressBack={() => navigation.goBack()} />
                 <View style={styles.contentContainer}>
                     <View style={styles.pageInfoContainer}>
-                        <TextNormal center bold>Welcome</TextNormal>
-                        <TextSmall center >Create an Account</TextSmall>
+                        <TextNormal center bold>Enter Code</TextNormal>
+                        <TextSmall center >Code has sent to +193******</TextSmall>
                     </View>
                     <View style={styles.formContainer}>
                         <Fields control={control} fields={FIELDS} />
-                    </View>
-                    <TextSmaller color={COLORS.grey}>We’ll call or text to confirm your number</TextSmaller>
-                    <View style={styles.bottomContainer}>
-                        <CustomButton title='Continue' containerStyle={{ marginVertical: 20 }} onPress={onContinue} />
-                        <TextSmall center>Have an Account? <TextSmall bold>Login</TextSmall></TextSmall>
-                        <View style={styles.row}>
-                            <View style={styles.bar} />
-                            <TextSmaller textStyle={{ flex: 1 }} center >or continue with</TextSmaller>
-                            <View style={styles.bar} />
-                        </View>
-                        <View style={styles.socialBar}>
-                            <AppleSVG />
-                            <GoogleSVG />
-                            <FacebookSVG />
-                        </View>
+                    </View><View style={styles.bottomContainer}>
+                        <CustomButton title='Next' containerStyle={{ marginVertical: 20 }} />
                     </View>
                 </View>
             </SafeAreaView>
@@ -85,7 +60,8 @@ const styles = StyleSheet.create({
         paddingTop: vs(20)
     },
     formContainer: {
-        gap: 6
+        paddingTop: vs(30),
+        flex: 1
     },
     contentContainer: {
         paddingHorizontal: scale(12),
