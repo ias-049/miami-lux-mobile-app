@@ -20,16 +20,17 @@ export type Field = {
     'valueAsNumber' | 'valueAsDate' | 'setValueAs' | 'disabled'
   >;
   type:
-    | 'date'
-    | 'text'
-    | 'time'
-    | 'textarea'
-    | 'option'
-    | 'radio'
-    | 'phoneNumber'
-    | 'image-picker'
-    | string;
+  | 'date'
+  | 'text'
+  | 'time'
+  | 'textarea'
+  | 'option'
+  | 'radio'
+  | 'phoneNumber'
+  | 'image-picker'
+  | string;
   defaultValue?: any;
+  lists?: { label: string; value: string }[]
 };
 
 interface FieldsType {
@@ -38,7 +39,7 @@ interface FieldsType {
 }
 
 const Fields: React.FC<FieldsType> = props => {
-  const {control, fields, ...rest} = props;
+  const { control, fields, ...rest } = props;
 
   return fields.map(i => (
     <Controller
@@ -47,7 +48,7 @@ const Fields: React.FC<FieldsType> = props => {
       key={i.name}
       defaultValue={i?.defaultValue}
       rules={i?.rules}
-      render={({field, fieldState}) => {
+      render={({ field, fieldState }) => {
         if (i.type === 'date') {
           return (
             <DateTimePicker
@@ -81,17 +82,16 @@ const Fields: React.FC<FieldsType> = props => {
         if (i.type === 'dropdown') {
           return (
             <CustomDropDown
-              value={field.value}
+              lists={i?.lists} value={field.value}
               onChange={field.onChange}
               error={fieldState?.error?.message}
-              {...i}
-            />
+              {...i} />
           );
         }
         return (
           <Input
             value={field.value}
-            onChange={field.onChange}
+            onChangeT={field.onChange}
             error={fieldState?.error?.message}
             {...i}
           />

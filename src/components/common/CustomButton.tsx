@@ -7,9 +7,10 @@ import {
   ViewStyle,
 } from 'react-native';
 
-import {scale, vs} from 'react-native-size-matters';
-import {COLORS} from '../../utils/theme';
-import {TextNormal} from './Texts';
+import { scale, vs } from 'react-native-size-matters';
+import { COLORS } from '../../utils/theme';
+import { TextNormal } from './Texts';
+import LinearGradient from 'react-native-linear-gradient';
 
 interface ICustomButtonProps extends TouchableOpacityProps {
   title: string;
@@ -41,7 +42,7 @@ const CustomButton: React.FC<ICustomButtonProps> = props => {
           secondary && styles.secondary,
           tirtiary && styles.tirtiary,
           containerStyle,
-          width && {width},
+          width && { width },
           disabled && styles.disabledButton,
         ]}
         onPress={onPress}
@@ -54,7 +55,7 @@ const CustomButton: React.FC<ICustomButtonProps> = props => {
             color={
               disabled ? '#CED7DA' : tirtiary ? COLORS.primary : COLORS.black
             }
-            // ∏textStyle={{fontSize: scale(13)}}
+          // ∏textStyle={{fontSize: scale(13)}}
           >
             {title}
           </TextNormal>
@@ -63,23 +64,32 @@ const CustomButton: React.FC<ICustomButtonProps> = props => {
     );
   }
   return (
+
     <TouchableOpacity
       onPress={onPress}
       disabled={disabled || loading}
       style={[
-        styles.container,
         styles.shadowProp,
-        width && {width},
+        width && { width },
         containerStyle,
         disabled && styles.disabledButton,
-      ]}>
-      {loading ? (
-        <ActivityIndicator size={'small'} color={'white'} />
-      ) : (
-        <TextNormal bold color={disabled ? '#CED7DA' : COLORS.white}>
-          {title}
-        </TextNormal>
-      )}
+      ]}
+    >
+      <LinearGradient
+        colors={[COLORS.primary, COLORS.secondary, COLORS.primary]}
+        start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}
+        useAngle
+        angle={320}
+        style={styles.linearContainer}
+      >
+        {loading ? (
+          <ActivityIndicator size={'small'} color={'white'} />
+        ) : (
+          <TextNormal bold color={disabled ? '#CED7DA' : COLORS.white}>
+            {title}
+          </TextNormal>
+        )}
+      </LinearGradient >
     </TouchableOpacity>
   );
 };
@@ -87,28 +97,22 @@ const CustomButton: React.FC<ICustomButtonProps> = props => {
 export default CustomButton;
 
 const styles = StyleSheet.create({
-  container: {
-    // minHeight: 50,
+  linearContainer: {
     minWidth: scale(80),
-    // width: '100%',
-    paddingHorizontal: scale(15),
-    backgroundColor: COLORS.primary,
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 10,
     height: vs(40),
   },
   secondary: {
-    backgroundColor: COLORS.secondary,
   },
 
   tirtiary: {
-    backgroundColor: COLORS.lightgrey,
   },
 
   shadowProp: {
     shadowColor: COLORS.primary,
-    shadowOffset: {width: -5, height: 5},
+    shadowOffset: { width: -5, height: 5 },
     shadowOpacity: 0.2,
     shadowRadius: 3,
     elevation: 5,

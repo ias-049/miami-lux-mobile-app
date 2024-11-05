@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, { useRef, useState } from 'react';
 import {
   StyleProp,
   StyleSheet,
@@ -8,10 +8,10 @@ import {
   View,
   ViewStyle,
 } from 'react-native';
-import {scale} from 'react-native-size-matters';
-import {COLORS} from '../../utils/theme';
+import { scale, vs } from 'react-native-size-matters';
+import { COLORS } from '../../utils/theme';
 import CustomIcon from './CustomIcon';
-import {TextSmall, TextSmaller} from './Texts';
+import { TextSmall, TextSmaller } from './Texts';
 
 interface InputProps extends TextInputProps {
   textInputContainerStyle?: StyleProp<ViewStyle>;
@@ -20,6 +20,7 @@ interface InputProps extends TextInputProps {
   label?: string;
   error?: string | undefined;
   icon?: any;
+  onChangeT: (txt: String) => void
 }
 
 const Input: React.FC<InputProps> = ({
@@ -28,7 +29,7 @@ const Input: React.FC<InputProps> = ({
   containerStyle,
   error,
   secureTextEntry,
-  onChange,
+  onChangeT,
   value,
   label,
   icon,
@@ -39,48 +40,46 @@ const Input: React.FC<InputProps> = ({
     !!secureTextEntry,
   );
 
-  const labelVisible = label && value && value.length;
-
   return (
-    // <View style={[containerStyle]}>
-    <>
-      <View style={[styles.container, containerStyle]}>
-        {labelVisible && (
-          <TextSmall textStyle={styles.label}>{label}</TextSmall>
-        )}
-        <View style={[styles.textInputContainer, textInputContainerStyle]}>
-          <CustomIcon {...icon} />
-          <TextInput
-            ref={textRef}
-            value={value}
-            style={[styles.textInput, textInputStyle]}
-            onChangeText={onChange}
-            placeholderTextColor={COLORS.lightgrey}
-            secureTextEntry={isVisible}
-            placeholder={restProps?.placeholder}
-          />
-          {!!secureTextEntry && (
-            <View
-              style={{
-                position: 'absolute',
-                right: 0,
-                top: !labelVisible ? 15 : -3.1,
-              }}>
-              <CustomIcon
-                name={!isVisible ? 'eye-slash' : 'eye'}
-                type="font-awesome-6"
-                onPress={() => setIsVisible(p => !p)}
-                size={scale(18)}
-              />
-            </View>
-          )}
+    <View style={{ gap: vs(7) }}>
+      {label && (
+        <TextSmall textStyle={styles.label}>{label}</TextSmall>
+      )}
+      <>
+        <View style={[styles.container, containerStyle]}>
+          <View style={[styles.textInputContainer, textInputContainerStyle]}>
+            <CustomIcon {...icon} />
+            <TextInput
+              ref={textRef}
+              value={value}
+              style={[styles.textInput, textInputStyle]}
+              onChangeText={onChangeT}
+              placeholderTextColor={COLORS.lightgrey}
+              secureTextEntry={isVisible}
+              placeholder={restProps?.placeholder}
+              {...restProps}
+            />
+            {!!secureTextEntry && (
+              <View
+                style={{
+                  position: 'absolute',
+                  right: 0,
+                }}>
+                <CustomIcon
+                  name={!isVisible ? 'eye-slash' : 'eye'}
+                  type="font-awesome-6"
+                  onPress={() => setIsVisible(p => !p)}
+                  size={scale(18)}
+                />
+              </View>
+            )}
+          </View>
         </View>
-      </View>
-      <TextSmaller bold color={'red'}>
-        {error && `* ${error}`}
-      </TextSmaller>
-    </>
-    // </View>
+        <TextSmaller bold color={'red'}>
+          {error && `* ${error}`}
+        </TextSmaller>
+      </>
+    </View>
   );
 };
 
@@ -89,7 +88,7 @@ export default Input;
 const styles = StyleSheet.create({
   container: {
     width: '100%',
-    backgroundColor: 'transparent',
+    backgroundColor: 'black',
     borderRadius: 8,
     height: scale(47),
     maxHeight: 80,
@@ -100,19 +99,15 @@ const styles = StyleSheet.create({
   label: {},
   textInputContainer: {
     width: '100%',
-    // alignSelf: 'center',
     borderRadius: 8,
-    // height: '100%',
     flex: 1,
     flexDirection: 'row',
-    // alignItems: 'center',
-    // backgroundColor: 'pink',
+    alignItems: 'center'
   },
   textInput: {
     fontSize: scale(16),
     paddingHorizontal: 10,
     flex: 1,
-    color: COLORS.black,
-    // backgroundColor: 'red',
+    color: COLORS.white,
   },
 });

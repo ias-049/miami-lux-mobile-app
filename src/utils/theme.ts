@@ -3,7 +3,7 @@ import { ms } from "react-native-size-matters";
 export const COLORS = {
   primary: '#004E80',
   primaryLight: '#A9BABC',
-  secondary: '#F4F3E4',
+  secondary: '#F82DDB',
   black: '#000000',
   lightgrey: '#9BA1A4',
   grey: '#6B7280',

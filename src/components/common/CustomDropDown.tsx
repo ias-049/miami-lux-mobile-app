@@ -1,6 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable react-native/no-inline-styles */
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   StyleProp,
   StyleSheet,
@@ -9,23 +7,23 @@ import {
   ViewStyle,
 } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
-import {ms, scale, vs} from 'react-native-size-matters';
-import {COLORS} from '../../utils/theme';
+import { ms, scale, vs } from 'react-native-size-matters';
+import { COLORS } from '../../utils/theme';
 import CustomIcon from './CustomIcon';
-import {TextSmall, TextSmaller} from './Texts';
-import Modal from 'react-native-modal';
+import { TextSmall, TextSmaller } from './Texts';
 
 interface CustomDropDownProps {
   containerStyle?: StyleProp<ViewStyle>;
   label?: string;
   placeholder?: string;
+  searchPlaceholder?: string;
   searchable?: boolean;
   multiple?: boolean;
   error?: string | undefined;
   dropDownType?: 'DEFAULT' | 'FLATLIST' | 'SCROLLVIEW' | 'MODAL';
   value: any;
   onChange: (arg: any) => void;
-  lists: {label: string; value: string}[];
+  lists: { label: string; value: string }[] | undefined;
 }
 
 const CustomDropDown: React.FC<CustomDropDownProps> = ({
@@ -33,8 +31,9 @@ const CustomDropDown: React.FC<CustomDropDownProps> = ({
   error,
   searchable,
   onChange,
-  placeholder,
+  placeholder = "Select Item",
   multiple,
+  searchPlaceholder = "Search here",
   dropDownType = 'MODAL',
   value = null,
   label,
@@ -46,8 +45,8 @@ const CustomDropDown: React.FC<CustomDropDownProps> = ({
   const [val, setValue] = useState(value);
   const [items, setItems] = useState(
     lists || [
-      {label: 'Apple', value: 'apple'},
-      {label: 'Banana', value: 'banana'},
+      { label: 'Apple', value: 'apple' },
+      { label: 'Banana', value: 'banana' },
     ],
   );
 
@@ -57,35 +56,34 @@ const CustomDropDown: React.FC<CustomDropDownProps> = ({
     }
   }, [val]);
 
-  const [modalVisible, setModalVisible] = useState(false);
-
-  const renderModal = (children: any) => {
+  const renderListItem = (props: any) => {
     return (
-      <Modal
-        isVisible={modalVisible}
-        animationIn={'slideInUp'}
-        animationOut={'fadeOut'}
-        style={{
-          flex: 1,
-          margin: 0,
-          justifyContent: 'flex-end',
-          paddingHorizontal: scale(10),
-          paddingBottom: vs(40),
-        }}>
+      <TouchableOpacity
+        style={styles.listItem}
+        onPress={() => props.onPress(props.item)}>
         <View
           style={{
-            minHeight: 120,
-            backgroundColor: COLORS.white,
-            borderRadius: 12,
+            flexDirection: 'row',
+            gap: 10,
+            alignItems: 'center',
           }}>
-          {children}
+          <TextSmall>{props?.label}</TextSmall>
         </View>
-      </Modal>
+        <CustomIcon
+          name={
+            !props.isSelected
+              ? 'radio-btn-passive'
+              : 'radio-btn-active'
+          }
+          color={COLORS.primary}
+          type="fontisto"
+          size={ms(18)}
+        />
+      </TouchableOpacity>
     );
-  };
+  }
 
   return (
-    // <View style={[containerStyle]}>
     <>
       <View style={[styles.container, containerStyle]}>
         {labelVisible && (
@@ -98,82 +96,24 @@ const CustomDropDown: React.FC<CustomDropDownProps> = ({
             items={items}
             setOpen={setOpen}
             setValue={setValue}
-            multiple={multiple}
             setItems={setItems}
-            onOpen={() => dropDownType === 'MODAL' && setModalVisible(true)}
-            onSelectItem={() =>
-              dropDownType === 'MODAL' && setModalVisible(false)
-            }
+            renderListItem={renderListItem}
+            multiple={multiple}
             placeholder={placeholder ?? ''}
-            placeholderStyle={{color: COLORS.lightgrey}}
+            placeholderStyle={{ color: COLORS.white }}
             listMode={dropDownType}
             searchable={searchable}
             itemSeparator
-            itemSeparatorStyle={{backgroundColor: COLORS.borderGrey}}
             dropDownDirection="BOTTOM"
-            searchPlaceholder="Search a country"
+            textStyle={{ color: 'white' }}
+            searchPlaceholder={searchPlaceholder}
+            style={styles.dropdownstyle}
+            containerStyle={styles.containerStyle}
             searchPlaceholderTextColor={COLORS.grey}
-            style={{
-              paddingBottom: 0,
-              paddingVertical: 0,
-              paddingLeft: 20,
-              height: scale(47),
-              borderRadius: 12,
-              borderWidth: 1,
-              borderColor: COLORS.borderGrey,
-              top: 5,
-            }}
-            textStyle={{fontFamily: 'Literal-Regular'}}
-            containerStyle={{
-              //   width: '20%',
-              marginBottom: 0,
-              alignItems: 'center',
-            }}
-            dropDownContainerStyle={{
-              // backgroundColor: 'white',
-              top: vs(45),
-              width: scale(320),
-              left: 0,
-              borderColor: COLORS.borderGrey,
-              borderRadius: 12,
-              overflow: 'hidden',
-              zIndex: 100,
-            }}
-            renderListItem={props => {
-              return (
-                <TouchableOpacity
-                  style={styles.listItem}
-                  onPress={() => props.onPress(props.item)}>
-                  <View
-                    style={{
-                      flexDirection: 'row',
-                      gap: 10,
-                      alignItems: 'center',
-                    }}>
-                    <TextSmall>{props?.label}</TextSmall>
-                  </View>
-                  <CustomIcon
-                    name={
-                      !props.isSelected
-                        ? 'radio-btn-passive'
-                        : 'radio-btn-active'
-                    }
-                    color={COLORS.primary}
-                    type="fontisto"
-                    size={ms(18)}
-                  />
-                </TouchableOpacity>
-              );
-            }}
-            searchContainerStyle={{
-              borderBottomColor: COLORS.borderGrey,
-            }}
-            searchTextInputStyle={{
-              height: vs(40),
-              fontSize: ms(14),
-              borderColor: COLORS.borderGrey,
-            }}
-            renderModal={(listComponent: any) => renderModal(listComponent)}
+            dropDownContainerStyle={styles.dropdownContainerStyle}
+            searchContainerStyle={styles.searchContainerStyle}
+            searchTextInputStyle={styles.searchTextInputStyle}
+            itemSeparatorStyle={styles.itemSeparatorStyle}
           />
         </View>
       </View>
@@ -193,9 +133,9 @@ const styles = StyleSheet.create({
     height: scale(47),
     maxHeight: 80,
     marginVertical: vs(13),
+    gap: vs(5)
   },
   label: {},
-
   item: {
     height: 40,
     overflow: 'hidden',
@@ -209,4 +149,37 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
   },
+  dropdownstyle: {
+    paddingBottom: 0,
+    paddingVertical: 0,
+    paddingLeft: 20,
+    height: scale(47),
+    borderRadius: 12,
+    borderWidth: 1,
+    backgroundColor: 'black',
+    borderColor: COLORS.borderGrey,
+    top: 5,
+  },
+  containerStyle: {
+    marginBottom: 0,
+    alignItems: 'center',
+  },
+  dropdownContainerStyle: {
+    backgroundColor: 'black',
+    top: vs(45),
+    left: 0,
+    borderColor: COLORS.borderGrey,
+    borderRadius: 12,
+    overflow: 'hidden',
+    zIndex: 100,
+  },
+  searchContainerStyle: {
+    borderBottomColor: COLORS.borderGrey,
+  },
+  searchTextInputStyle: {
+    height: vs(40),
+    fontSize: ms(14),
+    borderColor: COLORS.borderGrey,
+  },
+  itemSeparatorStyle: { backgroundColor: COLORS.borderGrey }
 });
