@@ -2,7 +2,9 @@ import { StackScreenProps } from '@react-navigation/stack';
 
 export type AuthStackParamList = {
   Login: undefined;
+  UserInfo: undefined;
   Register: undefined;
+  SubmitDocument: undefined;
   VerifyOTP: undefined;
 };
 

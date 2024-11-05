@@ -15,39 +15,39 @@ import GoogleSVG from '../assets/images/google.svg'
 import FacebookSVG from '../assets/images/facebook.svg'
 import { NavigationProp } from '@react-navigation/native'
 
-interface LoginProps {
+interface RegisterProps {
     navigation: NavigationProp<any>
 }
 
-export const LoginScreen: React.FC<LoginProps> = ({ navigation }) => {
+export const RegisterScreen: React.FC<RegisterProps> = ({ navigation }) => {
 
     const { control } = useForm()
 
     const FIELDS = [
         {
-            id: '2',
-            type: 'text',
-            label: "Email Address",
-            name: "email",
-            key: "email",
-            placeholder: "Enter email",
-            icon: { name: "mail", type: "ionicons", color: COLORS.primary, size: ms(20) }
+            id: '1',
+            type: 'dropdown',
+            label: "Country/Region",
+            name: "country",
+            key: "country",
+            lists: COUNTRIES,
+            dropDownType: 'FLATLIST'
         },
         {
             id: '2',
             type: 'text',
-            label: "Password",
-            name: "password",
-            key: "password",
-            secureTextEntry: true,
-            placeholder: "Enter password",
-            icon: { name: "locked", type: "fontisto", color: COLORS.primary, size: ms(20) }
+            label: "Phone nuumber",
+            name: "phonenumber",
+            placeholder: "Enter Phone number",
+            key: "phonenumber",
+            keyboardType: "number-pad",
+            icon: { name: "call", type: "ionicons", color: COLORS.primary, size: ms(20) }
         },
     ]
 
     const onContinue = () => navigation.navigate("VerifyOTP")
-    
-    const refirectToSignup = () => navigation.navigate("Register")
+
+    const refirectToLogin = () => navigation.navigate("Login")
 
     return (
         <BackgroundWrapper>
@@ -55,16 +55,16 @@ export const LoginScreen: React.FC<LoginProps> = ({ navigation }) => {
                 <CustomHeader title="Miami Lux" />
                 <View style={styles.contentContainer}>
                     <View style={styles.pageInfoContainer}>
-                        <TextNormal center bold>Login</TextNormal>
-                        <TextSmall center >Login to you account with email and password.</TextSmall>
+                        <TextNormal center bold>Welcome</TextNormal>
+                        <TextSmall center >Create an Account</TextSmall>
                     </View>
                     <View style={styles.formContainer}>
                         <Fields control={control} fields={FIELDS} />
                     </View>
                     <TextSmaller color={COLORS.grey}>We’ll call or text to confirm your number</TextSmaller>
                     <View style={styles.bottomContainer}>
-                        <CustomButton title='Login' containerStyle={{ marginVertical: 20 }} onPress={onContinue} />
-                        <TextSmall center>Don't have an Account? <TextSmall bold onPress={refirectToSignup}>Signup</TextSmall></TextSmall>
+                        <CustomButton title='Continue' containerStyle={{ marginVertical: 20 }} onPress={onContinue} />
+                        <TextSmall center>Have an Account? <TextSmall bold onPress={refirectToLogin}>Register</TextSmall></TextSmall>
                         <View style={styles.row}>
                             <View style={styles.bar} />
                             <TextSmaller textStyle={{ flex: 1 }} center >or continue with</TextSmaller>
@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
         paddingTop: vs(20)
     },
     formContainer: {
-        paddingTop: vs(20),
+        gap: 6
     },
     contentContainer: {
         paddingHorizontal: scale(12),
