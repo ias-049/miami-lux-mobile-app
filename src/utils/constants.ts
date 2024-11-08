@@ -300,5 +300,334 @@ export const COUNTRIES: Country[] = [
         "dial_code": "+257",
         "label": "🇧🇮 Burundi (+257)",
         "value": "+257"
+    },
+
+    {
+        "name": "Maldives",
+        "flag": "🇲🇻",
+        "code": "MV",
+        "dial_code": "+960",
+        "label": "🇲🇻 Maldives (+960)",
+        "value": "+960"
+    },
+    {
+        "name": "Mali",
+        "flag": "🇲🇱",
+        "code": "ML",
+        "dial_code": "+223",
+        "label": "🇲🇱 Mali (+223)",
+        "value": "+223"
+    },
+    {
+        "name": "Malta",
+        "flag": "🇲🇹",
+        "code": "MT",
+        "dial_code": "+356",
+        "label": "🇲🇹 Malta (+356)",
+        "value": "+356"
+    },
+    {
+        "name": "Marshall Islands",
+        "flag": "🇲🇭",
+        "code": "MH",
+        "dial_code": "+692",
+        "label": "🇲🇭 Marshall Islands (+692)",
+        "value": "+692"
+    },
+    {
+        "name": "Martinique",
+        "flag": "🇲🇶",
+        "code": "MQ",
+        "dial_code": "+596",
+        "label": "🇲🇶 Martinique (+596)",
+        "value": "+596"
+    },
+    {
+        "name": "Mauritania",
+        "flag": "🇲🇷",
+        "code": "MR",
+        "dial_code": "+222",
+        "label": "🇲🇷 Mauritania (+222)",
+        "value": "+222"
+    },
+    {
+        "name": "Mauritius",
+        "flag": "🇲🇺",
+        "code": "MU",
+        "dial_code": "+230",
+        "label": "🇲🇺 Mauritius (+230)",
+        "value": "+230"
+    },
+    {
+        "name": "Mayotte",
+        "flag": "🇾🇹",
+        "code": "YT",
+        "dial_code": "+262",
+        "label": "🇾🇹 Mayotte (+262)",
+        "value": "+262"
+    },
+    {
+        "name": "Mexico",
+        "flag": "🇲🇽",
+        "code": "MX",
+        "dial_code": "+52",
+        "label": "🇲🇽 Mexico (+52)",
+        "value": "+52"
+    },
+    {
+        "name": "Micronesia, Federated States of Micronesia",
+        "flag": "🇫🇲",
+        "code": "FM",
+        "dial_code": "+691",
+        "label": "🇫🇲 Micronesia, Federated States of Micronesia (+691)",
+        "value": "+691"
+    },
+    {
+        "name": "Moldova",
+        "flag": "🇲🇩",
+        "code": "MD",
+        "dial_code": "+373",
+        "label": "🇲🇩 Moldova (+373)",
+        "value": "+373"
+    },
+    {
+        "name": "Monaco",
+        "flag": "🇲🇨",
+        "code": "MC",
+        "dial_code": "+377",
+        "label": "🇲🇨 Monaco (+377)",
+        "value": "+377"
+    },
+    {
+        "name": "Mongolia",
+        "flag": "🇲🇳",
+        "code": "MN",
+        "dial_code": "+976",
+        "label": "🇲🇳 Mongolia (+976)",
+        "value": "+976"
+    },
+    {
+        "name": "Montenegro",
+        "flag": "🇲🇪",
+        "code": "ME",
+        "dial_code": "+382",
+        "label": "🇲🇪 Montenegro (+382)",
+        "value": "+382"
+    },
+    {
+        "name": "Montserrat",
+        "flag": "🇲🇸",
+        "code": "MS",
+        "dial_code": "+1664",
+        "label": "🇲🇸 Montserrat (+1664)",
+        "value": "+1664"
+    },
+    {
+        "name": "Morocco",
+        "flag": "🇲🇦",
+        "code": "MA",
+        "dial_code": "+212",
+        "label": "🇲🇦 Morocco (+212)",
+        "value": "+212"
+    },
+    {
+        "name": "Mozambique",
+        "flag": "🇲🇿",
+        "code": "MZ",
+        "dial_code": "+258",
+        "label": "🇲🇿 Mozambique (+258)",
+        "value": "+258"
+    },
+    {
+        "name": "Myanmar",
+        "flag": "🇲🇲",
+        "code": "MM",
+        "dial_code": "+95",
+        "label": "🇲🇲 Myanmar (+95)",
+        "value": "+95"
+    },
+    {
+        "name": "Namibia",
+        "flag": "🇳🇦",
+        "code": "NA",
+        "dial_code": "+264",
+        "label": "🇳🇦 Namibia (+264)",
+        "value": "+264"
+    },
+    {
+        "name": "Nauru",
+        "flag": "🇳🇷",
+        "code": "NR",
+        "dial_code": "+674",
+        "label": "🇳🇷 Nauru (+674)",
+        "value": "+674"
+    },
+    {
+        "name": "Nepal",
+        "flag": "🇳🇵",
+        "code": "NP",
+        "dial_code": "+977",
+        "label": "🇳🇵 Nepal (+977)",
+        "value": "+977"
+    },
+    {
+        "name": "Netherlands",
+        "flag": "🇳🇱",
+        "code": "NL",
+        "dial_code": "+31",
+        "label": "🇳🇱 Netherlands (+31)",
+        "value": "+31"
+    },
+    {
+        "name": "Netherlands Antilles",
+        "flag": "",
+        "code": "AN",
+        "dial_code": "+599",
+        "label": "Netherlands Antilles (+599)",
+        "value": "+599"
+    },
+    {
+        "name": "New Caledonia",
+        "flag": "🇳🇨",
+        "code": "NC",
+        "dial_code": "+687",
+        "label": "🇳🇨 New Caledonia (+687)",
+        "value": "+687"
+    },
+    {
+        "name": "New Zealand",
+        "flag": "🇳🇿",
+        "code": "NZ",
+        "dial_code": "+64",
+        "label": "🇳🇿 New Zealand (+64)",
+        "value": "+64"
+    },
+    {
+        "name": "Nicaragua",
+        "flag": "🇳🇮",
+        "code": "NI",
+        "dial_code": "+505",
+        "label": "🇳🇮 Nicaragua (+505)",
+        "value": "+505"
+    },
+    {
+        "name": "Niger",
+        "flag": "🇳🇪",
+        "code": "NE",
+        "dial_code": "+227",
+        "label": "🇳🇪 Niger (+227)",
+        "value": "+227"
+    },
+    {
+        "name": "Nigeria",
+        "flag": "🇳🇬",
+        "code": "NG",
+        "dial_code": "+234",
+        "label": "🇳🇬 Nigeria (+234)",
+        "value": "+234"
+    },
+    {
+        "name": "Niue",
+        "flag": "🇳🇺",
+        "code": "NU",
+        "dial_code": "+683",
+        "label": "🇳🇺 Niue (+683)",
+        "value": "+683"
+    },
+    {
+        "name": "Norfolk Island",
+        "flag": "🇳🇫",
+        "code": "NF",
+        "dial_code": "+672",
+        "label": "🇳🇫 Norfolk Island (+672)",
+        "value": "+672"
+    },
+    {
+        "name": "Northern Mariana Islands",
+        "flag": "🇲🇵",
+        "code": "MP",
+        "dial_code": "+1670",
+        "label": "🇲🇵 Northern Mariana Islands (+1670)",
+        "value": "+1670"
+    },
+    {
+        "name": "Norway",
+        "flag": "🇳🇴",
+        "code": "NO",
+        "dial_code": "+47",
+        "label": "🇳🇴 Norway (+47)",
+        "value": "+47"
+    },
+    {
+        "name": "Oman",
+        "flag": "🇴🇲",
+        "code": "OM",
+        "dial_code": "+968",
+        "label": "🇴🇲 Oman (+968)",
+        "value": "+968"
+    },
+    {
+        "name": "Pakistan",
+        "flag": "🇵🇰",
+        "code": "PK",
+        "dial_code": "+92",
+        "label": "🇵🇰 Pakistan (+92)",
+        "value": "+92"
+    },
+    {
+        "name": "Palau",
+        "flag": "🇵🇼",
+        "code": "PW",
+        "dial_code": "+680",
+        "label": "🇵🇼 Palau (+680)",
+        "value": "+680"
+    },
+    {
+        "name": "Panama",
+        "flag": "🇵🇦",
+        "code": "PA",
+        "dial_code": "+507",
+        "label": "🇵🇦 Panama (+507)",
+        "value": "+507"
+    },
+    {
+        "name": "Papua New Guinea",
+        "flag": "🇵🇬",
+        "code": "PG",
+        "dial_code": "+675",
+        "label": "🇵🇬 Papua New Guinea (+675)",
+        "value": "+675"
+    },
+    {
+        "name": "Paraguay",
+        "flag": "🇵🇾",
+        "code": "PY",
+        "dial_code": "+595",
+        "label": "🇵🇾 Paraguay (+595)",
+        "value": "+595"
+    },
+    {
+        "name": "Peru",
+        "flag": "🇵🇪",
+        "code": "PE",
+        "dial_code": "+51",
+        "label": "🇵🇪 Peru (+51)",
+        "value": "+51"
+    },
+    {
+        "name": "Philippines",
+        "flag": "🇵🇭",
+        "code": "PH",
+        "dial_code": "+63",
+        "label": "🇵🇭 Philippines (+63)",
+        "value": "+63"
+    },
+    {
+        "name": "Pitcairn Islands",
+        "flag": "🇵🇬",
+        "code": "PN",
+        "dial_code": "+872",
+        "label": "🇵🇬 Pitcairn Islands (+872)",
+        "value": "+872"
     }
 ];
