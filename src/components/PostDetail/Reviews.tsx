@@ -24,6 +24,7 @@ export const Reviews: React.FC<ReviewsProps> = (props) => {
             <FlatList
                 data={[{ id: "1", review: "sdfsdf" }, { id: "2", review: "sdfsdf" },]}
                 keyExtractor={(item) => item.id}
+                showsHorizontalScrollIndicator={false}
                 horizontal
                 ItemSeparatorComponent={() => <View style={{ width: 10 }} />}
                 renderItem={({ item }) => (

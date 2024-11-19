@@ -37,7 +37,6 @@ const CustomButton: React.FC<ICustomButtonProps> = props => {
     return (
       <TouchableOpacity
         style={[
-          styles.container,
           styles.shadowProp,
           secondary && styles.secondary,
           tirtiary && styles.tirtiary,
@@ -53,7 +52,7 @@ const CustomButton: React.FC<ICustomButtonProps> = props => {
           <TextNormal
             bold
             color={
-              disabled ? '#CED7DA' : tirtiary ? COLORS.primary : COLORS.black
+              disabled ? '#CED7DA' : "#968A9C"
             }
           // ∏textStyle={{fontSize: scale(13)}}
           >
@@ -106,6 +105,13 @@ const styles = StyleSheet.create({
     height: vs(40),
   },
   secondary: {
+    borderColor: "#483751",
+    borderWidth: 1,
+    height: vs(40),
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 10,
+    paddingHorizontal: scale(10)
   },
 
   tirtiary: {

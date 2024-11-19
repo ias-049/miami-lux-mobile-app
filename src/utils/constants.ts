@@ -12,6 +12,10 @@ export type Country = {
     code: string;
     dial_code: string
 }
+
+export const CONFIRMED_INFO_LIST = [{ id: "1", isChecked: true, text: "Identity" }, { id: "2", isChecked: true, text: "Email Address" }, { id: "3", isChecked: true, text: "Phone Number" }]
+export const LANGUAGE = [{ id: "1", isChecked: true, text: "English" }, { id: "2", isChecked: true, text: "Spanish" }]
+
 export const COUNTRIES: Country[] = [
     {
         "name": "Afghanistan",
