@@ -20,7 +20,7 @@ const IdentityVerificationSuccess: React.FC<IdentityVerificationSuccessProps> = 
 
     const handleNext = () => {
         closeModal()
-        navigation.navigate("Home")
+        navigation.navigate("Dash")
     }
 
     return (

@@ -80,7 +80,8 @@ const CustomButton: React.FC<ICustomButtonProps> = props => {
         start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}
         useAngle
         angle={320}
-        style={styles.linearContainer}
+        style={[styles.linearContainer,
+          containerStyle,]}
       >
         {loading ? (
           <ActivityIndicator size={'small'} color={'white'} />

@@ -6,6 +6,7 @@ import { VerifyOTPScreen } from '../screens/VerifyOTP';
 import { DocumentSubmissionScreen } from '../screens/DocumentSubmission';
 import { UserInfoScreen } from '../screens/UserInfo';
 import { LoginScreen } from '../screens/Login';
+import DashStack from './DashStack';
 
 const Stack = createStackNavigator<AuthStackParamList>();
 
@@ -17,6 +18,7 @@ const AuthStack: React.FC = () => {
       <Stack.Screen name="VerifyOTP" component={VerifyOTPScreen} />
       <Stack.Screen name="SubmitDocument" component={DocumentSubmissionScreen} />
       <Stack.Screen name="UserInfo" component={UserInfoScreen} />
+      <Stack.Screen name="Dash" component={DashStack} />
     </Stack.Navigator>
   );
 };
