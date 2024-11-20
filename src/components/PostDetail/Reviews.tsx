@@ -7,26 +7,33 @@ import { IMAGES } from '../../utils/images'
 import { RatingStars } from '../RatingStars'
 
 interface ReviewsProps {
+    isVertical: boolean
 }
 
 interface ReviewProps {
 }
 
 export const Reviews: React.FC<ReviewsProps> = (props) => {
-    const { } = props
+    const { isVertical } = props
 
     return (
         <View style={styles.container}>
-            <View style={styles.headRow}>
-                <RatingStars />
-                <TextNormal>(149 Reviews)</TextNormal>
-            </View>
+            {isVertical ?
+                <TextNormal textStyle={{ marginBottom: 15 }}>(149 Reviews)</TextNormal>
+                : (
+                    <View style={styles.headRow}>
+                        <RatingStars />
+                        <TextNormal>(149 Reviews)</TextNormal>
+                    </View>
+                )
+            }
             <FlatList
                 data={[{ id: "1", review: "sdfsdf" }, { id: "2", review: "sdfsdf" },]}
                 keyExtractor={(item) => item.id}
                 showsHorizontalScrollIndicator={false}
-                horizontal
-                ItemSeparatorComponent={() => <View style={{ width: 10 }} />}
+                horizontal={!isVertical}
+                contentContainerStyle={{ gap: 10, alignItems: "center" }}
+                // ItemSeparatorComponent={() => <View style={{ width: 10 }} />}
                 renderItem={({ item }) => (
                     <Review />
                 )}

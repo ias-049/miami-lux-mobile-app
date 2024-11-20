@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View } from 'react-native';
 import React from 'react';
+import { Post } from '../Post';
 
 interface ListingSectionProps {
 
@@ -11,12 +12,17 @@ export const ListingSection: React.FC<ListingSectionProps> = (props) => {
 
     return (
         <View style={styles.container}>
-            <Text>ListingSection</Text>
+            <Post />
+            <Post />
+            <Post />
+            <Post />
+            <Post />
         </View>
     );
 };
 
 const styles = StyleSheet.create({
     container: {
+        gap: 10
     }
 });
