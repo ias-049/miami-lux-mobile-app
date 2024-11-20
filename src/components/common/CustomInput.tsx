@@ -41,11 +41,11 @@ const Input: React.FC<InputProps> = ({
   );
 
   return (
-    <View style={{ gap: vs(7) }}>
-      {label && (
-        <TextSmall textStyle={styles.label}>{label}</TextSmall>
-      )}
-      <>
+    <>
+      <View style={{ gap: vs(5) }}>
+        {label && (
+          <TextSmall textStyle={styles.label}>{label}</TextSmall>
+        )}
         <View style={[styles.container, containerStyle]}>
           <View style={[styles.textInputContainer, textInputContainerStyle]}>
             <CustomIcon {...icon} />
@@ -75,11 +75,11 @@ const Input: React.FC<InputProps> = ({
             )}
           </View>
         </View>
-        <TextSmaller bold color={'red'}>
-          {error && `* ${error}`}
-        </TextSmaller>
-      </>
-    </View>
+      </View>
+      <TextSmaller bold color={'red'}>
+        {error && `* ${error}`}
+      </TextSmaller>
+    </>
   );
 };
 

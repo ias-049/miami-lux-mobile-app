@@ -1,9 +1,10 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import React from 'react';
 import { TextNormal, TextSmall } from '../common/Texts';
 import CustomIcon from '../common/CustomIcon';
 import { ms } from 'react-native-size-matters';
 import MessageSVG from '../../assets/images/message.svg'
+import { NavigationProp, useNavigation } from '@react-navigation/native';
 
 interface InfoBarProps {
 
@@ -12,9 +13,12 @@ interface InfoBarProps {
 export const InfoBar: React.FC<InfoBarProps> = (props) => {
 
     const { } = props;
+    const navigation: NavigationProp<any> = useNavigation()
+
+    const redirectToPersonalInfo = () => navigation.navigate("PersonalInformationScreen")
 
     return (
-        <View style={styles.container}>
+        <TouchableOpacity style={styles.container} onPress={redirectToPersonalInfo}>
             <View style={[styles.row, styles.spaceBetween,]}>
                 <View style={styles.row}>
                     <TextNormal>Annie Ben</TextNormal>
@@ -32,7 +36,7 @@ export const InfoBar: React.FC<InfoBarProps> = (props) => {
                     <CustomIcon name='star' type='material-community' color='#FEB621' disabled size={ms(20)} />
                 </View>
             </View>
-        </View>
+        </TouchableOpacity>
     );
 };
 

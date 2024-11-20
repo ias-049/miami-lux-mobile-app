@@ -1,6 +1,7 @@
 import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
 import { ProfileScreen } from '../../screens/Profile';
+import { PersonalInformationScreen } from '../../screens/PersonalInformation';
 
 interface ProfileStackProps { }
 
@@ -14,6 +15,7 @@ const ProfileStack: React.FC<ProfileStackProps> = props => {
         headerShown: false,
       }}>
       <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
+      <Stack.Screen name="PersonalInformationScreen" component={PersonalInformationScreen} />
     </Stack.Navigator>
   );
 };
