@@ -19,7 +19,7 @@ import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import Zocial from 'react-native-vector-icons/Zocial';
 import {COLORS} from '../../utils/theme';
 
-interface CustomIconProps extends TouchableOpacityProps {
+export interface CustomIconProps extends TouchableOpacityProps {
   onPress?: () => void;
   name: string | undefined;
   type:

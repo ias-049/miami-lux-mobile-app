@@ -1,8 +1,8 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import React from 'react';
-import { IMAGES } from '../../utils/images';
+import { IMAGES } from '../utils/images';
 import { vs } from 'react-native-size-matters';
-import CameraSVG from '../../assets/images/camera.svg'
+import CameraSVG from '../assets/images/camera.svg'
 
 interface ProfilePhotoProps {
 

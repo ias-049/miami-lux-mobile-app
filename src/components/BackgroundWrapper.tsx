@@ -1,11 +1,14 @@
 import React from 'react'
-import { StyleSheet, View } from 'react-native'
+import { Dimensions, StyleSheet, View } from 'react-native'
 import BackgroundSVG from '../assets/images/background.svg'
+
+const width = Dimensions.get('screen').width
+const height = Dimensions.get('screen').height
 
 const BackgroundWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     return (
         <View style={styles.container}>
-            <BackgroundSVG />
+            <BackgroundSVG height={height} width={width}/>
             <View style={styles.absContainer}>
                 {children}
             </View>

@@ -1,10 +1,12 @@
-import { createStackNavigator } from '@react-navigation/stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
 import { RentalScreen } from '../../screens/Rentals';
+import { GuestRequirementScreen } from '../../screens/GuestRequirement';
+import { CancellationPolicyScreen } from '../../screens/CancellationPolicy';
 
 interface RentalStackProps { }
 
-const Stack = createStackNavigator();
+const Stack = createNativeStackNavigator();
 
 export const RentalStack: React.FC<RentalStackProps> = props => {
   const { } = props;
@@ -12,7 +14,12 @@ export const RentalStack: React.FC<RentalStackProps> = props => {
     <Stack.Navigator
       screenOptions={{
         headerShown: false,
+        animation: 'slide_from_right',
+        animationTypeForReplace: 'push',
+        animationDuration: 200,
       }}>
+      <Stack.Screen name="GuestRequirementScreen" component={GuestRequirementScreen} />
+      <Stack.Screen name="CancellationPolicyScreen" component={CancellationPolicyScreen} />
       <Stack.Screen name="RentalScreen" component={RentalScreen} />
     </Stack.Navigator>
   );

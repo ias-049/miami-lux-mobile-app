@@ -77,6 +77,8 @@ export const UserInfoScreen: React.FC<UserInfoProps> = (props) => {
                         <TextNormal center bold>Fill up your information</TextNormal>
                     </View>
                     <Fields fields={FIELDS} control={control} />
+                </View>
+                <View style={styles.btnContainer}>
                     <CustomButton title='Next' onPress={openModal} />
                 </View>
             </SafeAreaView>
@@ -94,7 +96,11 @@ const styles = StyleSheet.create({
     },
     contentContainer: {
         paddingHorizontal: scale(10),
-        // justifyContent: 'space-between',
+        justifyContent: 'center',
         flex: 1
+    },
+    btnContainer: {
+        padding: ms(12),
+        paddingBottom: ms(20),
     }
 })

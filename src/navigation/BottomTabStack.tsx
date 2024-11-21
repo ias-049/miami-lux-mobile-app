@@ -63,6 +63,7 @@ const BottomTabStack: React.FC = () => {
           borderTopColor: '#DCDBCD',
           height: vs(65),
         },
+        tabBarHideOnKeyboard: true
       }}>
       {TABS.map(tab => (
         <Tab.Screen

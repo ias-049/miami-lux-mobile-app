@@ -1,10 +1,10 @@
-import { createStackNavigator } from '@react-navigation/stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
-import { ProfileScreen } from '../../screens/Profile';
+import { MessagingScreen } from '../../screens/Messaging';
 
 interface InboxStackProps { }
 
-const Stack = createStackNavigator();
+const Stack = createNativeStackNavigator();
 
 const InboxStack: React.FC<InboxStackProps> = props => {
   const { } = props;
@@ -12,8 +12,11 @@ const InboxStack: React.FC<InboxStackProps> = props => {
     <Stack.Navigator
       screenOptions={{
         headerShown: false,
+        animation: 'slide_from_right',
+        animationTypeForReplace: 'push',
+        animationDuration: 200,
       }}>
-      <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
+      <Stack.Screen name="Messaging" component={MessagingScreen} />
     </Stack.Navigator>
   );
 };

@@ -1,9 +1,10 @@
-import { Image, StyleSheet, Text, View } from 'react-native'
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import { ms } from 'react-native-size-matters'
 import { IMAGES } from '../../utils/images'
 import { TextNormal, TextSmall } from '../common/Texts'
 import CustomIcon from '../common/CustomIcon'
+import { NavigationProp, useNavigation } from '@react-navigation/native'
 
 interface OwnerDetailProps {
 
@@ -12,11 +13,14 @@ interface OwnerDetailProps {
 export const OwnerDetails: React.FC<OwnerDetailProps> = (props) => {
 
     const { } = props
+    const navigation: NavigationProp<any> = useNavigation()
+
+    const redirectUserProfile = () => navigation.navigate("UserProfileScreen")
 
     return (
         <View style={styles.container}>
             <View style={styles.infoBox}>
-                <View style={styles.ownerContainer}>
+                <TouchableOpacity style={styles.ownerContainer} onPress={redirectUserProfile}>
                     <View style={styles.imgContainer}>
                         <Image source={IMAGES.photo} style={{ height: '100%', width: '100%' }} />
                     </View>
@@ -30,7 +34,7 @@ export const OwnerDetails: React.FC<OwnerDetailProps> = (props) => {
                             <TextSmall>Joined in 2019</TextSmall>
                         </View>
                     </View>
-                </View>
+                </TouchableOpacity>
                 <View style={styles.actionContainer}>
                     <View style={styles.iconContainer}>
                         <CustomIcon name='message-processing-outline' color='#4F2F8B' type='material-community' size={ms(18)} />

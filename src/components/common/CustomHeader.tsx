@@ -13,11 +13,12 @@ interface CustomHeaderProps {
     onPressRight?: () => void;
     rightIcon?: { name: string; type: any; color?: string; size?: number; disabled?: boolean }
     cgb?: boolean;
+    hideRightIcon?: boolean;
 }
 
 const CustomHeader: React.FC<CustomHeaderProps> = (props) => {
 
-    const { title, onPressBack, onPressRight, cgb, rightIcon } = props
+    const { title, onPressBack, onPressRight, hideRightIcon = false, cgb, rightIcon } = props
 
     const navigation: NavigationProp<any> = useNavigation()
 
@@ -42,11 +43,11 @@ const CustomHeader: React.FC<CustomHeaderProps> = (props) => {
                 <TextNormal bold>{title}</TextNormal>
             </View>
             <View style={styles.right}>
-                <TouchableOpacity onPress={onPressRight}>
+                {!hideRightIcon && <TouchableOpacity onPress={onPressRight}>
                     <LinearGradient colors={["#4A3CB080", "#844AB2"]} style={styles.iconContainer}>
                         <CustomIcon name={rightIcon?.name ?? 'dots-three-vertical'} type={rightIcon?.type ?? 'entypo'} color={rightIcon?.color ?? 'white'} size={rightIcon?.size ?? ms(18)} disabled />
                     </LinearGradient>
-                </TouchableOpacity>
+                </TouchableOpacity>}
             </View>
         </View>
     )

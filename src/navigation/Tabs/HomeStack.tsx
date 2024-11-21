@@ -1,11 +1,11 @@
-import { createStackNavigator } from '@react-navigation/stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
 import { HomeScreen } from '../../screens/Home';
 import { PostDetailScreen } from '../../screens/PostDetail';
 
 interface HomeStackProps { }
 
-const Stack = createStackNavigator();
+const Stack = createNativeStackNavigator();
 
 export const HomeStack: React.FC<HomeStackProps> = props => {
   const { } = props;
@@ -13,6 +13,9 @@ export const HomeStack: React.FC<HomeStackProps> = props => {
     <Stack.Navigator
       screenOptions={{
         headerShown: false,
+        animation: 'slide_from_right',
+        animationTypeForReplace: 'push',
+        animationDuration: 200,
       }}>
       <Stack.Screen name="HomeScreen" component={HomeScreen} />
       <Stack.Screen name="PostDetailScreen" component={PostDetailScreen} />

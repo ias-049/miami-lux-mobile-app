@@ -1,4 +1,4 @@
-import { createStackNavigator } from '@react-navigation/stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
 import { AuthStackParamList } from './interface';
 import { RegisterScreen } from '../screens/Register';
@@ -8,11 +8,15 @@ import { UserInfoScreen } from '../screens/UserInfo';
 import { LoginScreen } from '../screens/Login';
 import DashStack from './DashStack';
 
-const Stack = createStackNavigator<AuthStackParamList>();
+const Stack = createNativeStackNavigator<AuthStackParamList>();
 
 const AuthStack: React.FC = () => {
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
+    <Stack.Navigator screenOptions={{
+      headerShown: false, animation: 'slide_from_right',
+      animationTypeForReplace: 'push',
+      animationDuration: 200,
+    }}>
       <Stack.Screen name="Login" component={LoginScreen} />
       <Stack.Screen name="Register" component={RegisterScreen} />
       <Stack.Screen name="VerifyOTP" component={VerifyOTPScreen} />

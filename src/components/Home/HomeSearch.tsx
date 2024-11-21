@@ -18,7 +18,7 @@ export const HomeSearch: React.FC<HomeSearchProps> = (props) => {
                 <LocationSearchSVG />
                 <CustomIcon name='search' color='white' disabled type='material-icons' size={ms(19)} />
                 <TextInput placeholder='Seach here' placeholderTextColor={"white"} style={styles.input} />
-                <CustomIcon name='sliders' color='white' disabled type='feather' size={ms(19)}/>
+                <CustomIcon name='sliders' color='white' disabled type='feather' size={ms(19)} />
             </View>
         </LinearGradient>
     )
@@ -42,6 +42,7 @@ const styles = StyleSheet.create({
         flex: 1,
         height: '100%',
         padding: 0,
+        color: "white"
         // paddingHorizontal: 10,
         // backgroundColor: 'red'
     }

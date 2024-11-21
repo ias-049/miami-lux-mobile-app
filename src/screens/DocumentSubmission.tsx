@@ -32,8 +32,8 @@ export const DocumentSubmissionScreen: React.FC<Props> = (props) => {
                         <TextSmall center >Take a picture of your government ID Card</TextSmall>
                     </View>
                     <View style={styles.formContainer}>
-                        <IDFrontSVG />
-                        <IDBackSVG />
+                        <IDFrontSVG height={vs(200)} width={scale(400)} />
+                        <IDBackSVG height={vs(200)} width={scale(400)}/>
                     </View>
                     <View style={styles.bottomContainer}>
                         <CustomButton title='Next' containerStyle={{ marginVertical: 20 }} onPress={onPressNext} />

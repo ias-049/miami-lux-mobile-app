@@ -1,27 +1,135 @@
-import React, { useState } from 'react'
-import { ScrollView, StyleSheet, View } from 'react-native'
-import { SafeAreaView } from 'react-native-safe-area-context'
-import BackgroundWrapper from '../components/BackgroundWrapper'
-import CustomHeader from '../components/common/CustomHeader'
-import { InfoBar } from '../components/Profile/InfoBar'
-import { ProfilePhoto } from '../components/Profile/ProfilePhoto'
-import { ProfileSection } from '../components/Profile/ProfileSection'
-import { ProfileTabs } from '../components/Profile/ProfileTabs'
-import { ProfileSelects } from '../utils/interface'
-import { ListingSection } from '../components/Profile/ListingSection'
-import { ReviewSection } from '../components/Profile/ReviewSection'
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import React from 'react';
+import BackgroundWrapper from '../components/BackgroundWrapper';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import CustomHeader from '../components/common/CustomHeader';
+import { ProfilePhoto } from '../components/ProfilePhoto';
+import { ListYourProducts } from '../components/Profile/ListYourProducts';
+import { ms } from 'react-native-size-matters';
+import { GroupList, ListItemType } from '../components/Profile/GroupList';
+import CustomIcon from '../components/common/CustomIcon';
+import { TextSmall } from '../components/common/Texts';
+import { NavigationProp } from '@react-navigation/native';
 
-interface ProfileProps { }
+interface ProfileScreenProps {
+    navigation: NavigationProp<any>
+}
 
-export const ProfileScreen: React.FC<ProfileProps> = (props) => {
+export const ProfileScreen: React.FC<ProfileScreenProps> = (props) => {
 
-    const { } = props
+    const { navigation } = props;
 
-    const [section, setSection] = useState<ProfileSelects>('profile')
+    const redirectToPersonalInfo = () => navigation.navigate("PersonalInformationScreen")
 
-    const onSelect = (key: ProfileSelects) => {
-        setSection(key)
-    }
+    const ACCOUNT_LIST: ListItemType[] = [
+        {
+            id: "1",
+            icon: { name: "person", type: "ionicons", color: "#883DDF", size: ms(16) },
+            text: 'Personal Information',
+            onPress: redirectToPersonalInfo
+        }, {
+            id: "2",
+            icon: { name: "bell", type: "font-awesome-6", color: "#883DDF", size: ms(16) },
+            text: 'Notifications',
+            onPress: function (): void {
+                throw new Error('Function not implemented.');
+            }
+        }, {
+            id: "3",
+            icon: { name: "language", type: "ionicons", color: "#883DDF", size: ms(16) },
+            text: 'Language',
+            onPress: function (): void {
+                throw new Error('Function not implemented.');
+            }
+        }, {
+            id: "4",
+            icon: { name: "shield-lock", solid: true, type: "octicon", color: "#883DDF", size: ms(16) },
+            text: 'Login & Security',
+            onPress: function (): void {
+                throw new Error('Function not implemented.');
+            }
+        },
+    ]
+    const LISTING_LIST: ListItemType[] = [
+        {
+            id: "1",
+            icon: { name: "person", type: "ionicons", color: "#883DDF", size: ms(16) },
+            text: 'Switch to Listings',
+            onPress: function (): void {
+                throw new Error('Function not implemented.');
+            }
+        }, {
+            id: "2",
+            icon: { name: "bell", type: "font-awesome-6", color: "#883DDF", size: ms(16) },
+            text: 'Add a Listing',
+            onPress: function (): void {
+                throw new Error('Function not implemented.');
+            }
+        },
+    ]
+    const REFERRAL_LIST: ListItemType[] = [
+        {
+            id: "1",
+            icon: { name: "person", type: "ionicons", color: "#883DDF", size: ms(16) },
+            text: 'Referrals & Commissions',
+            description: '5% commission on every transaction made for life',
+            onPress: function (): void {
+                throw new Error('Function not implemented.');
+            }
+        },
+    ]
+    const SUPPORT_LIST: ListItemType[] = [
+        {
+            id: "1",
+            icon: { name: "person", type: "ionicons", color: "#883DDF", size: ms(16) },
+            text: 'How Miamiluxe works',
+            onPress: function (): void {
+                throw new Error('Function not implemented.');
+            }
+        },
+        {
+            id: "2",
+            icon: { name: "person", type: "ionicons", color: "#883DDF", size: ms(16) },
+            text: 'Contact Us',
+            onPress: function (): void {
+                throw new Error('Function not implemented.');
+            }
+        },
+        {
+            id: "3",
+            icon: { name: "person", type: "ionicons", color: "#883DDF", size: ms(16) },
+            text: 'Give us Feedback',
+            onPress: function (): void {
+                throw new Error('Function not implemented.');
+            }
+        },
+    ]
+    const LEGAL_LIST: ListItemType[] = [
+        {
+            id: "1",
+            icon: { name: "person", type: "ionicons", color: "#883DDF", size: ms(16) },
+            text: 'Terms of Service',
+            onPress: function (): void {
+                throw new Error('Function not implemented.');
+            }
+        },
+        {
+            id: "2",
+            icon: { name: "person", type: "ionicons", color: "#883DDF", size: ms(16) },
+            text: 'Terms and Conditions',
+            onPress: function (): void {
+                throw new Error('Function not implemented.');
+            }
+        },
+        {
+            id: "3",
+            icon: { name: "person", type: "ionicons", color: "#883DDF", size: ms(16) },
+            text: 'Privacy Policy',
+            onPress: function (): void {
+                throw new Error('Function not implemented.');
+            }
+        },
+    ]
 
     return (
         <BackgroundWrapper>
@@ -30,24 +138,34 @@ export const ProfileScreen: React.FC<ProfileProps> = (props) => {
                 <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 20 }}>
                     <ProfilePhoto />
                     <View style={styles.contentContainer}>
-                        <InfoBar />
-                        <ProfileTabs selected={section} onSelect={onSelect} />
-                        {section === "profile" ? <ProfileSection /> : section === "listings" ? <ListingSection /> : <ReviewSection />}
+                        <ListYourProducts />
+                        <GroupList title='Account' list={ACCOUNT_LIST} />
+                        <GroupList title='Listing' list={LISTING_LIST} />
+                        <GroupList title='Referrals' list={REFERRAL_LIST} />
+                        <GroupList title='Support' list={SUPPORT_LIST} />
+                        <GroupList title='Legal' list={LEGAL_LIST} />
+                        <TouchableOpacity style={styles.logout}>
+                            <CustomIcon name='logout' type='antdesign' disabled color='#878787' size={ms(16)} />
+                            <TextSmall color='#878787'>Logout</TextSmall>
+                        </TouchableOpacity>
                     </View>
                 </ScrollView>
             </SafeAreaView>
         </BackgroundWrapper>
-    )
-}
+    );
+};
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        flex: 1
     },
     contentContainer: {
-        flex: 1,
-        paddingHorizontal: 12,
-        paddingTop: 12,
-        gap: 15
+        padding: ms(12),
+        gap: 20
+    },
+    logout: {
+        flexDirection: "row",
+        alignItems: "center",
+        gap: 8,
     }
-})
+});
