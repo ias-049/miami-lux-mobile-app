@@ -9,7 +9,7 @@ import {
 
 import { scale, vs } from 'react-native-size-matters';
 import { COLORS } from '../../utils/theme';
-import { TextNormal } from './Texts';
+import { TextNormal, TextSmall } from './Texts';
 import LinearGradient from 'react-native-linear-gradient';
 
 interface ICustomButtonProps extends TouchableOpacityProps {
@@ -17,6 +17,7 @@ interface ICustomButtonProps extends TouchableOpacityProps {
   secondary?: boolean;
   containerStyle?: ViewStyle;
   width?: any;
+  textSmall?: boolean;
   tirtiary?: boolean;
   loading?: boolean;
 }
@@ -31,9 +32,12 @@ const CustomButton: React.FC<ICustomButtonProps> = props => {
     tirtiary,
     loading,
     disabled,
+    textSmall,
     ...rest
   } = props;
   if (secondary || tirtiary) {
+
+    const TextWrapper = textSmall ? TextSmall : TextNormal
     return (
       <TouchableOpacity
         style={[
@@ -49,7 +53,7 @@ const CustomButton: React.FC<ICustomButtonProps> = props => {
         {loading ? (
           <ActivityIndicator size={'small'} color={'white'} />
         ) : (
-          <TextNormal
+          <TextWrapper
             bold
             color={
               disabled ? '#CED7DA' : "#968A9C"
@@ -57,7 +61,7 @@ const CustomButton: React.FC<ICustomButtonProps> = props => {
           // ∏textStyle={{fontSize: scale(13)}}
           >
             {title}
-          </TextNormal>
+          </TextWrapper>
         )}
       </TouchableOpacity>
     );

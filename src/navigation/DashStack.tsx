@@ -3,6 +3,7 @@ import React from 'react';
 import { DashStackParamList } from './interface';
 import BottomTabStack from './BottomTabStack';
 import { UserProfileScreen } from '../screens/UserProfile';
+import { MyBookingsScreen } from '../screens/MyBookings';
 
 interface DashProps {
 }
@@ -16,6 +17,7 @@ const DashStack: React.FC<DashProps> = () => {
       animationTypeForReplace: 'push',
       animationDuration: 200,
     }}>
+      <Stack.Screen name="MyBookingScreen" component={MyBookingsScreen} />
       <Stack.Screen name="Tabs" component={BottomTabStack} />
       <Stack.Screen name="UserProfileScreen" component={UserProfileScreen} />
     </Stack.Navigator>
