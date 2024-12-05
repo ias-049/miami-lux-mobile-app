@@ -18,6 +18,7 @@ import {TextSmall} from './Texts';
 interface PhoneInputProps {
   containerStyle?: ViewStyle;
   value: string;
+  error?: string;
   onChange: (arg: string) => void;
 }
 

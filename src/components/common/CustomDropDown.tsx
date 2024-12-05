@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   StyleProp,
   StyleSheet,
@@ -7,10 +7,10 @@ import {
   ViewStyle,
 } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
-import { ms, scale, vs } from 'react-native-size-matters';
-import { COLORS } from '../../utils/theme';
+import {ms, scale, vs} from 'react-native-size-matters';
+import {COLORS} from '../../utils/theme';
 import CustomIcon from './CustomIcon';
-import { TextSmall, TextSmaller } from './Texts';
+import {TextSmall, TextSmaller} from './Texts';
 
 interface CustomDropDownProps {
   containerStyle?: StyleProp<ViewStyle>;
@@ -23,17 +23,17 @@ interface CustomDropDownProps {
   dropDownType?: 'DEFAULT' | 'FLATLIST' | 'SCROLLVIEW' | 'MODAL';
   value: any;
   onChange: (arg: any) => void;
-  lists: { label: string; value: string }[] | undefined;
+  lists: {label: string; value: string}[] | undefined;
 }
 
 const CustomDropDown: React.FC<CustomDropDownProps> = ({
-  containerStyle,
+  containerStyle = {},
   error,
   searchable,
   onChange,
-  placeholder = "Select Item",
+  placeholder = 'Select Item',
   multiple,
-  searchPlaceholder = "Search here",
+  searchPlaceholder = 'Search here',
   dropDownType = 'MODAL',
   value = null,
   label,
@@ -45,8 +45,8 @@ const CustomDropDown: React.FC<CustomDropDownProps> = ({
   const [val, setValue] = useState(value);
   const [items, setItems] = useState(
     lists || [
-      { label: 'Apple', value: 'apple' },
-      { label: 'Banana', value: 'banana' },
+      {label: 'Apple', value: 'apple'},
+      {label: 'Banana', value: 'banana'},
     ],
   );
 
@@ -70,22 +70,18 @@ const CustomDropDown: React.FC<CustomDropDownProps> = ({
           <TextSmall>{props?.label}</TextSmall>
         </View>
         <CustomIcon
-          name={
-            !props.isSelected
-              ? 'radio-btn-passive'
-              : 'radio-btn-active'
-          }
+          name={!props.isSelected ? 'radio-btn-passive' : 'radio-btn-active'}
           color={COLORS.primary}
           type="fontisto"
           size={ms(18)}
         />
       </TouchableOpacity>
     );
-  }
+  };
 
   return (
     <>
-      <View style={[styles.container, containerStyle]}>
+      <View style={[styles.container]}>
         {labelVisible && (
           <TextSmall textStyle={styles.label}>{label}</TextSmall>
         )}
@@ -100,14 +96,14 @@ const CustomDropDown: React.FC<CustomDropDownProps> = ({
             renderListItem={renderListItem}
             multiple={multiple}
             placeholder={placeholder ?? ''}
-            placeholderStyle={{ color: COLORS.white }}
+            placeholderStyle={{color: COLORS.white}}
             listMode={dropDownType}
             searchable={searchable}
             itemSeparator
             dropDownDirection="BOTTOM"
-            textStyle={{ color: 'white' }}
+            textStyle={{color: 'white'}}
             searchPlaceholder={searchPlaceholder}
-            style={styles.dropdownstyle}
+            style={{...styles.dropdownstyle, ...containerStyle}}
             containerStyle={styles.containerStyle}
             searchPlaceholderTextColor={COLORS.grey}
             dropDownContainerStyle={styles.dropdownContainerStyle}
@@ -132,8 +128,8 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
     height: scale(47),
     maxHeight: 80,
-    marginVertical: vs(13),
-    gap: vs(5)
+    marginTop: vs(5),
+    gap: vs(5),
   },
   label: {},
   item: {
@@ -154,7 +150,7 @@ const styles = StyleSheet.create({
     paddingVertical: 0,
     paddingLeft: 20,
     height: scale(47),
-    borderRadius: 12,
+    borderRadius: 8,
     borderWidth: 1,
     backgroundColor: 'black',
     borderColor: COLORS.borderGrey,
@@ -168,7 +164,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'black',
     top: vs(45),
     left: 0,
-    borderColor: COLORS.borderGrey,
+    // borderColor: COLORS.borderGrey,
     borderRadius: 12,
     overflow: 'hidden',
     zIndex: 100,
@@ -181,5 +177,5 @@ const styles = StyleSheet.create({
     fontSize: ms(14),
     borderColor: COLORS.borderGrey,
   },
-  itemSeparatorStyle: { backgroundColor: COLORS.borderGrey }
+  itemSeparatorStyle: {backgroundColor: COLORS.borderGrey},
 });

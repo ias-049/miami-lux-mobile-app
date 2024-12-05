@@ -12,6 +12,7 @@ import PhoneInput from './PhoneInput';
 import OTPInput from './OTPInput';
 import DateTimePicker from './DateTimePicker';
 import CustomDropDown from './CustomDropDown';
+import CustomTextArea from './CustomTextArea';
 
 export type Field = {
   name: string;
@@ -20,17 +21,17 @@ export type Field = {
     'valueAsNumber' | 'valueAsDate' | 'setValueAs' | 'disabled'
   >;
   type:
-  | 'date'
-  | 'text'
-  | 'time'
-  | 'textarea'
-  | 'option'
-  | 'radio'
-  | 'phoneNumber'
-  | 'image-picker'
-  | string;
+    | 'date'
+    | 'text'
+    | 'time'
+    | 'textarea'
+    | 'option'
+    | 'radio'
+    | 'phoneNumber'
+    | 'image-picker'
+    | string;
   defaultValue?: any;
-  lists?: { label: string; value: string }[]
+  lists?: {label: string; value: string}[];
 };
 
 interface FieldsType {
@@ -39,7 +40,7 @@ interface FieldsType {
 }
 
 const Fields: React.FC<FieldsType> = props => {
-  const { control, fields, ...rest } = props;
+  const {control, fields, ...rest} = props;
 
   return fields.map(i => (
     <Controller
@@ -48,7 +49,7 @@ const Fields: React.FC<FieldsType> = props => {
       key={i.name}
       defaultValue={i?.defaultValue}
       rules={i?.rules}
-      render={({ field, fieldState }) => {
+      render={({field, fieldState}) => {
         if (i.type === 'date') {
           return (
             <DateTimePicker
@@ -82,10 +83,21 @@ const Fields: React.FC<FieldsType> = props => {
         if (i.type === 'dropdown') {
           return (
             <CustomDropDown
-              lists={i?.lists} value={field.value}
+              lists={i?.lists}
+              value={field.value}
               onChange={field.onChange}
               error={fieldState?.error?.message}
-              {...i} />
+              {...i}
+            />
+          );
+        }
+        if (i.type === 'textarea') {
+          return (
+            <CustomTextArea
+              onChangeT={field.onChange}
+              error={fieldState?.error?.message}
+              {...i}
+            />
           );
         }
         return (

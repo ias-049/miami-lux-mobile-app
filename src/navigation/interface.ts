@@ -18,6 +18,8 @@ export type TabStackParamList = {
 
 export type DashStackParamList = {
   Tabs: undefined
+  MyBookingScreen: undefined
+  AddProduct: undefined
   UserProfileScreen: undefined
 };
 
