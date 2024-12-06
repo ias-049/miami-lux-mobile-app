@@ -5,6 +5,7 @@ import {UserProfileScreen} from '../screens/UserProfile';
 import BottomTabStack from './BottomTabStack';
 import {DashStackParamList} from './interface';
 import {MyBookingsScreen} from '../screens/MyBookings';
+import { InboxScreen } from '../screens/Inbox';
 
 interface DashProps {}
 
@@ -23,6 +24,7 @@ const DashStack: React.FC<DashProps> = () => {
       <Stack.Screen name="MyBookingScreen" component={MyBookingsScreen} />
       <Stack.Screen name="UserProfileScreen" component={UserProfileScreen} />
       <Stack.Screen name="AddProduct" component={AddProduct} />
+      <Stack.Screen name="InboxScreen" component={InboxScreen} />
     </Stack.Navigator>
   );
 };

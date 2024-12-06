@@ -6,8 +6,8 @@ import DashStack from './DashStack';
 const RootNavigation: React.FC = () => {
   const accessToken = useAppSelector(store => store.userSlice.accessToken);
 
-  // return <AuthStack />;
-  return <DashStack />;
+  return <AuthStack />;
+  // return <DashStack />;
 };
 
 export default RootNavigation;

@@ -26,6 +26,7 @@ const ChatHeader: FC<Props> = data => {
             size={RFValue(20)}
             type={'antdesign'}
             name="arrowleft"
+            color='white'
           />
         )}
         {profile_pic && (
@@ -50,9 +51,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   iconContainer: {
-    borderWidth: RFValue(1),
-    borderColor: COLORS.grey,
-    borderRadius: 100,
     padding: RFValue(5),
     marginRight: widthPercentageToDP(3),
   },

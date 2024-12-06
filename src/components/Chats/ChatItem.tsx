@@ -24,11 +24,12 @@ export const ChatItem: React.FC<ChatItemProps> = (props) => {
             </View>
             <View style={styles.textContainer}>
                 <TextNormal>Brooklyn Simmons</TextNormal>
-                <TextSmall color={COLORS.secondary}>{`"${"I am ready to help"}"`}</TextSmall>
+                <TextSmall color={"#615868"}>{`"${"I am ready to help"}"`}</TextSmall>
             </View>
             <View style={styles.numberContainer}>
+                <TextSmaller>21 min ago</TextSmaller>
                 <View style={styles.messageCountContainer}>
-                    <TextSmaller color={COLORS.black}>1</TextSmaller>
+                    <TextSmaller color={COLORS.white}>1</TextSmaller>
                 </View>
             </View>
         </TouchableOpacity>
@@ -52,16 +53,17 @@ const styles = StyleSheet.create({
     },
     textContainer: {
         // height: vs(60),
-        gap: 7,
+        gap: 15,
         flex: 1
     },
     numberContainer: {
-        width: scale(20),
+        // width: scale(20),
         height: "100%",
-        justifyContent: "center",
+        alignItems: "flex-end",
+        justifyContent: "space-evenly"
     },
     messageCountContainer: {
-        backgroundColor: "#FFF7FA",
+        backgroundColor: "#4F2F8B",
         borderRadius: 100,
         width: scale(18),
         aspectRatio: 1,

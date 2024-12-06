@@ -31,7 +31,8 @@ export const MessagingScreen: React.FC<MessagingProps> = (props) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        gap: 10
+        gap: 10,
+        paddingHorizontal: 12
     },
     icon: {
         padding: 2,

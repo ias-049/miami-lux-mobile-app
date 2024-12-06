@@ -17,6 +17,7 @@ import { widthPercentageToDP } from 'react-native-responsive-screen';
 import { vs } from 'react-native-size-matters';
 import { COLORS } from '../../../utils/theme';
 import CustomIcon from '../../common/CustomIcon';
+import LinearGradient from 'react-native-linear-gradient';
 
 const renderTime = (props: TimeProps<IMessage>) => {
   return (
@@ -50,7 +51,7 @@ const renderBubble = (props: Readonly<BubbleProps<IMessage>>) => {
           padding: widthPercentageToDP(1),
         },
         left: {
-          backgroundColor: "#0F1B43",
+          backgroundColor: "#170A22",
           padding: widthPercentageToDP(1),
           borderWidth: 0,
         },
@@ -61,7 +62,36 @@ const renderBubble = (props: Readonly<BubbleProps<IMessage>>) => {
 
 // Only to hide the default send button
 const renderSend = (sendProps: SendProps<IMessage>) => {
-  return <></>;
+
+  const HandlePress = () => {
+    if (sendProps.text && sendProps.onSend) {
+      // Construct the message object
+      const newMessage: IMessage = {
+        _id: Math.random().toString(), // Unique ID for the message
+        text: sendProps.text.trim(),
+        createdAt: new Date(),
+        user: {
+          _id: 1, // The ID of the current user
+          avatar: "https://ui-avatars.com/api/?background=0dbc3f&color=FFF&nameInsaram Alam"
+        },
+      };
+
+      // Trigger the onSend function with the new message
+      sendProps.onSend([newMessage], true);
+    }
+  };
+  return <TouchableOpacity
+    style={
+      styles.sendContainer
+    }
+    onPress={HandlePress}>
+    <CustomIcon
+      name={'paper-plane'}
+      type={'ionicons'}
+      size={22}
+      color={sendProps.text?.length ? "#C82CC1" : COLORS.grey}
+    />
+  </TouchableOpacity>;
 };
 
 const renderComposer = (props: ComposerProps) => {
@@ -69,41 +99,12 @@ const renderComposer = (props: ComposerProps) => {
 };
 
 const renderInputToolbar = (props: InputToolbarProps<IMessage>) => {
-  const { text, onSend } = props || {};
+  const { text } = props || {};
   const hasInputValue = !!text.trim().length;
-
-  const HandlePress = () => {
-    if (hasInputValue && onSend) {
-      // Construct the message object
-      const newMessage: IMessage = {
-        _id: Math.random().toString(), // Unique ID for the message
-        text: text.trim(),
-        createdAt: new Date(),
-        user: {
-          _id: 1, // The ID of the current user
-        },
-      };
-
-      // Trigger the onSend function with the new message
-      onSend([newMessage], true);
-    }
-  };
 
   return (
     <View style={styles.renderInputToolbarContainer}>
       <InputToolbar {...props} containerStyle={styles.inputToolbar} textInputProps={{ color: "white" }} />
-      <TouchableOpacity
-        style={
-          styles.sendContainer
-        }
-        onPress={HandlePress}>
-        <CustomIcon
-          name={'paper-airplane'}
-          type={'octicon'}
-          size={22}
-          color={hasInputValue ? COLORS.white : COLORS.grey}
-        />
-      </TouchableOpacity>
     </View>
   );
 };
@@ -112,24 +113,22 @@ const styles = StyleSheet.create({
   renderInputToolbarContainer: {
     flexDirection: 'row',
     justifyContent: 'space-around',
+    backgroundColor: "transparent"
   },
   inputToolbar: {
-    width: '83%',
-    borderRadius: 30,
+    width: '100%',
     borderTopWidth: 0,
     minHeight: vs(37),
     justifyContent: 'center',
     borderColor: COLORS.borderGrey,
     borderWidth: 0,
     borderTopColor: COLORS.borderGrey,
-    backgroundColor: "#232243",
-    color: "white"
+    backgroundColor: "#3B235B",
+    color: "white",
+    borderRadius: 8
   },
   sendContainer: {
-    borderWidth: 1,
-    borderColor: "#2C95D3",
     padding: RFValue(12),
-    borderRadius: 100,
     justifyContent: 'center',
     maxHeight: RFValue(45),
     alignSelf: 'flex-end',

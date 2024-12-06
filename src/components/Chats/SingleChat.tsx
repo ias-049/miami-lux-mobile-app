@@ -28,7 +28,8 @@ const SingleChat = () => {
         user: {
           _id: 2,
           name: 'React Native',
-          avatar: 'https://placeimg.com/140/140/any',
+
+          avatar: 'https://ui-avatars.com/api/?background=0dbc3f&color=FFF&nameInsaram Alam',
         },
       },
     ]);
@@ -46,13 +47,13 @@ const SingleChat = () => {
         messages={messages}
         onSend={(messages: any[]) => onSend(messages)}
         user={{
-          _id: 1,
+          _id: "database_user_sender", avatar: 'https://ui-avatars.com/api/?background=0dbc3f&color=FFF&nameInsaram Alam',
         }}
-        renderAvatar={null}
+        showUserAvatar
         renderTime={renderTime}
         renderBubble={renderBubble}
         renderSend={renderSend}
-        renderComposer={renderComposer}
+        // renderComposer={renderComposer}
         renderInputToolbar={renderInputToolbar}
       />
     </View>
