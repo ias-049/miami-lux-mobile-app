@@ -3,7 +3,7 @@ import {Dimensions, StyleSheet, View} from 'react-native';
 import {SvgXml} from 'react-native-svg';
 import { IMAGES } from '../utils/images';
 
-const width = Dimensions.get('screen').width + 2;
+const width = Dimensions.get('screen').width + 1;
 const height = Dimensions.get('screen').height + 1;
 
 const BackgroundWrapper: React.FC<{children: React.ReactNode}> = ({

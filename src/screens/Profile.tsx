@@ -7,22 +7,22 @@ import {
 } from 'react-native';
 import React from 'react';
 import BackgroundWrapper from '../components/BackgroundWrapper';
-import {SafeAreaView} from 'react-native-safe-area-context';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import CustomHeader from '../components/common/CustomHeader';
-import {ProfilePhoto} from '../components/ProfilePhoto';
-import {ListYourProducts} from '../components/Profile/ListYourProducts';
-import {ms} from 'react-native-size-matters';
-import {GroupList, ListItemType} from '../components/Profile/GroupList';
+import { ProfilePhoto } from '../components/ProfilePhoto';
+import { ListYourProducts } from '../components/Profile/ListYourProducts';
+import { ms } from 'react-native-size-matters';
+import { GroupList, ListItemType } from '../components/Profile/GroupList';
 import CustomIcon from '../components/common/CustomIcon';
-import {TextSmall} from '../components/common/Texts';
-import {NavigationProp} from '@react-navigation/native';
+import { TextSmall } from '../components/common/Texts';
+import { NavigationProp } from '@react-navigation/native';
 
 interface ProfileScreenProps {
   navigation: NavigationProp<any>;
 }
 
 export const ProfileScreen: React.FC<ProfileScreenProps> = props => {
-  const {navigation} = props;
+  const { navigation } = props;
 
   const redirectToPersonalInfo = () =>
     navigation.navigate('PersonalInformationScreen');
@@ -30,7 +30,7 @@ export const ProfileScreen: React.FC<ProfileScreenProps> = props => {
   const ACCOUNT_LIST: ListItemType[] = [
     {
       id: '1',
-      icon: {name: 'person', type: 'ionicons', color: '#883DDF', size: ms(16)},
+      icon: { name: 'person', type: 'ionicons', color: '#883DDF', size: ms(16) },
       text: 'Personal Information',
       onPress: redirectToPersonalInfo,
     },
@@ -44,7 +44,7 @@ export const ProfileScreen: React.FC<ProfileScreenProps> = props => {
       },
       text: 'Notifications',
       onPress: function (): void {
-        throw new Error('Function not implemented.');
+
       },
     },
     {
@@ -57,7 +57,7 @@ export const ProfileScreen: React.FC<ProfileScreenProps> = props => {
       },
       text: 'Language',
       onPress: function (): void {
-        throw new Error('Function not implemented.');
+
       },
     },
     {
@@ -71,17 +71,17 @@ export const ProfileScreen: React.FC<ProfileScreenProps> = props => {
       },
       text: 'Login & Security',
       onPress: function (): void {
-        throw new Error('Function not implemented.');
+
       },
     },
   ];
   const LISTING_LIST: ListItemType[] = [
     {
       id: '1',
-      icon: {name: 'person', type: 'ionicons', color: '#883DDF', size: ms(16)},
+      icon: { name: 'person', type: 'ionicons', color: '#883DDF', size: ms(16) },
       text: 'Switch to Listings',
       onPress: function (): void {
-        throw new Error('Function not implemented.');
+
       },
     },
     {
@@ -94,70 +94,70 @@ export const ProfileScreen: React.FC<ProfileScreenProps> = props => {
       },
       text: 'Add a Listing',
       onPress: function (): void {
-        throw new Error('Function not implemented.');
+
       },
     },
   ];
   const REFERRAL_LIST: ListItemType[] = [
     {
       id: '1',
-      icon: {name: 'person', type: 'ionicons', color: '#883DDF', size: ms(16)},
+      icon: { name: 'person', type: 'ionicons', color: '#883DDF', size: ms(16) },
       text: 'Referrals & Commissions',
       description: '5% commission on every transaction made for life',
       onPress: function (): void {
-        throw new Error('Function not implemented.');
+
       },
     },
   ];
   const SUPPORT_LIST: ListItemType[] = [
     {
       id: '1',
-      icon: {name: 'person', type: 'ionicons', color: '#883DDF', size: ms(16)},
+      icon: { name: 'person', type: 'ionicons', color: '#883DDF', size: ms(16) },
       text: 'How Miamiluxe works',
       onPress: function (): void {
-        throw new Error('Function not implemented.');
+
       },
     },
     {
       id: '2',
-      icon: {name: 'person', type: 'ionicons', color: '#883DDF', size: ms(16)},
+      icon: { name: 'person', type: 'ionicons', color: '#883DDF', size: ms(16) },
       text: 'Contact Us',
       onPress: function (): void {
-        throw new Error('Function not implemented.');
+
       },
     },
     {
       id: '3',
-      icon: {name: 'person', type: 'ionicons', color: '#883DDF', size: ms(16)},
+      icon: { name: 'person', type: 'ionicons', color: '#883DDF', size: ms(16) },
       text: 'Give us Feedback',
       onPress: function (): void {
-        throw new Error('Function not implemented.');
+
       },
     },
   ];
   const LEGAL_LIST: ListItemType[] = [
     {
       id: '1',
-      icon: {name: 'person', type: 'ionicons', color: '#883DDF', size: ms(16)},
+      icon: { name: 'person', type: 'ionicons', color: '#883DDF', size: ms(16) },
       text: 'Terms of Service',
       onPress: function (): void {
-        throw new Error('Function not implemented.');
+
       },
     },
     {
       id: '2',
-      icon: {name: 'person', type: 'ionicons', color: '#883DDF', size: ms(16)},
+      icon: { name: 'person', type: 'ionicons', color: '#883DDF', size: ms(16) },
       text: 'Terms and Conditions',
       onPress: function (): void {
-        throw new Error('Function not implemented.');
+
       },
     },
     {
       id: '3',
-      icon: {name: 'person', type: 'ionicons', color: '#883DDF', size: ms(16)},
+      icon: { name: 'person', type: 'ionicons', color: '#883DDF', size: ms(16) },
       text: 'Privacy Policy',
       onPress: function (): void {
-        throw new Error('Function not implemented.');
+
       },
     },
   ];
@@ -168,7 +168,7 @@ export const ProfileScreen: React.FC<ProfileScreenProps> = props => {
         <CustomHeader title="Profile" />
         <ScrollView
           showsVerticalScrollIndicator={false}
-          contentContainerStyle={{paddingBottom: 20}}>
+          contentContainerStyle={{ paddingBottom: 20 }}>
           <ProfilePhoto />
           <View style={styles.contentContainer}>
             <ListYourProducts />
